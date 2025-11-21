@@ -7,12 +7,11 @@ using UnityEngine.InputSystem;
 // The Circle Collider 2D should be set to "is trigger", resized and moved to a  proper position for ground check. 
 // The following components are also needed: Player Input 
 // Gravity for the project is set in Unity at Edit -> Project Settings -> Physics2D  -> Gravity Y 
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), 
-   typeof(CapsuleCollider2D))] 
+[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(CapsuleCollider2D))] 
 public class PlatformerMovement : MonoBehaviour 
 { 
    //The crystal manager 
-   //public CrystalManager cm; 
+   public CrystalManager cm; 
    
    [SerializeField] private float maxSpeed = 10f; 
  
@@ -175,16 +174,16 @@ Time.deltaTime;
  
        if (context.canceled && controlEnabled) 
        { 
-            jumpReleased = true; 
-            jumpInput = false; 
+           jumpReleased = true; 
+           jumpInput = false; 
        } 
    } 
-//Counts the crystals!! 
+//Counts the crystals!!
     void OnTriggerEnter2D(Collider2D other) 
     { 
         if (other.gameObject.CompareTag("Crystal")) 
         { 
-            //cm.crystalCount++; 
+            cm.crystalCount++; 
         } 
     } 
 }
