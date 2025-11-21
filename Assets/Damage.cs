@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
+    public playerHealth pHealth;
+    public float damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +14,13 @@ public class Damage : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            pHealth.health -= damage;
+        }
     }
 }
