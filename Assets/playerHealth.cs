@@ -19,7 +19,7 @@ public class playerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Debug.Log("Dead");
         }
     }
 }
